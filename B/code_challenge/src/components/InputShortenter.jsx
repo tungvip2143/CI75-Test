@@ -11,16 +11,7 @@ const InputShortener = ({ setInputValue }) => {
     setInputValue(value);
     setValue("");
   };
-  const handleId = (id) => {
-    if (id === "domain1") {
-      localStorage.setItem("id", "domain1");
-      setId("domain1");
-    } else if (id === "domain2") {
-      localStorage.setItem("id", "domain2");
-      setId("domain2");
-    }
-    localStorage.setItem("id", "domain3");
-  };
+
   return (
     <div className="inputContainer">
       <h1>Link Shortener</h1>
@@ -39,13 +30,13 @@ const InputShortener = ({ setInputValue }) => {
             Short domain:
             <button
               className={`domain ${id === "domain1" ? "checked" : ""}`}
-              onClick={handleId("domain1")}
+              onClick={() => setId("domain1")}
             >
               shrtco.de
             </button>
             <button
               className={`domain ${id === "domain2" ? "checked" : ""}`}
-              onClick={handleId("domain2")}
+              onClick={() => setId("domain2")}
             >
               9qr.de
             </button>

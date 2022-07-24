@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 class="top-heading">
+      <h1 className="top-heading">
         The <b>privacy-friendly</b> URL Shortener
       </h1>
       <InputShortener setInputValue={setInputValue} />

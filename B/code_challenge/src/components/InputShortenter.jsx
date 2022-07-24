@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const InputShortener = ({ setInputValue }) => {
   const [value, setValue] = useState("");
-
+  const [id, setId] = useState("domain1");
   const handleInput = (e) => {
     setValue(e.target.value);
   };
@@ -10,6 +10,16 @@ const InputShortener = ({ setInputValue }) => {
   const handleClick = () => {
     setInputValue(value);
     setValue("");
+  };
+  const handleId = (id) => {
+    if (id === "domain1") {
+      localStorage.setItem("id", "domain1");
+      setId("domain1");
+    } else if (id === "domain2") {
+      localStorage.setItem("id", "domain2");
+      setId("domain2");
+    }
+    localStorage.setItem("id", "domain3");
   };
   return (
     <div className="inputContainer">
@@ -26,19 +36,25 @@ const InputShortener = ({ setInputValue }) => {
         <button onClick={handleClick}>→</button>
         <label>
           <div className="radio-toolbar">
-            Short domain
-            <input
-              type="radio"
-              id="domain1"
-              name="domain"
-              value="shrtco.de"
-              checked
-            />
-            <label htmlFor="domain1">shrtco.de</label>
-            <input type="radio" id="domain2" name="domain" value="9qr.de" />
-            <label htmlFor="domain2">9qr.de</label>
-            <input type="radio" id="domain3" name="domain" value="shiny.link" />
-            <label htmlFor="domain3">shiny.link</label>
+            Short domain:
+            <button
+              className={`domain ${id === "domain1" ? "checked" : ""}`}
+              onClick={handleId("domain1")}
+            >
+              shrtco.de
+            </button>
+            <button
+              className={`domain ${id === "domain2" ? "checked" : ""}`}
+              onClick={handleId("domain2")}
+            >
+              9qr.de
+            </button>
+            <button
+              className={`domain ${id === "domain3" ? "checked" : ""}`}
+              onClick={() => setId("domain3")}
+            >
+              shiny.link
+            </button>
           </div>
         </label>
       </div>
